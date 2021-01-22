@@ -16,8 +16,8 @@ def main():
 
     # test out more
     for n in nodes:
-        print('n is {}'.format(n))
-
+        print(n)
+        
     n = local_mdb.get_node('KoWtYN')
     #n = local_mdb.get_node('KoWtYNasasasa')    
     if n:
