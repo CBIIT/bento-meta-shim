@@ -43,7 +43,7 @@ def main():
     print(' - - - -')
 
     p2 = local_mdb.get_property('shUKsa')
-    print('found property {}'.format(p2.parents))
+    print('found property {}'.format(p2.handle))
 
     vss = local_mdb.get_valuesets()
     for vs in vss:
