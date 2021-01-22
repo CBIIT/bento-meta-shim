@@ -1,0 +1,33 @@
+❯ python -m line_profiler build_tree_test.py.lprof
+Timer unit: 1e-06 s
+
+Total time: 301.543 s
+File: build_tree_test.py
+Function: build_tree at line 21
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    21                                           @profile
+    22                                           def build_tree():
+    23         2      34295.0  17147.5      0.0      drv = get_neo4j_db()
+    24         2          8.0      4.0      0.0      model_list = ['CTDC', 'ICDC', 'Bento']
+    25         8          8.0      1.0      0.0      for m in model_list:
+    26         6        906.0    151.0      0.0          _model = Model(m, drv)
+    27         6    1744926.0 290821.0      0.6          _model.dget()
+    28         6        151.0     25.2      0.0          print('model: {}'.format(_model.handle))
+    29       136        191.0      1.4      0.0          for _node in _model.nodes.values():
+    30       130       3147.0     24.2      0.0              print('  node:{} {}'.format(_node.nanoid, _node.handle))
+    31      1738       3397.0      2.0      0.0              for tuple_key in _node.props:
+    32      1608   54980097.0  34191.6     18.2                  _prop = _node.props[tuple_key]
+    33      1608      71543.0     44.5      0.0                  print('    prop:{} {}'.format(_prop.nanoid, _prop.handle))
+    34      1608      27405.0     17.0      0.0                  if (_prop.value_domain) and _prop.value_domain == 'value_set':
+    35       438      92020.0    210.1      0.0                      _prop.dget()
+    36       438   15041999.0  34342.5      5.0                      if (_prop.value_set) and _prop.value_set is not None:
+    37                                                                   # vs
+    38       412       4921.0     11.9      0.0                          _vset = _prop.value_set
+    39       412      13317.0     32.3      0.0                          print('      vset:{} {}'.format(_vset.nanoid, _vset.handle))
+    40     14306      22497.0      1.6      0.0                          for term_key in _vset.terms:
+    41     13894  229042529.0  16485.0     76.0                              _term = _vset.terms[term_key]
+    42     13894     459374.0     33.1      0.2                              print('        term:{} {}'.format(_term.nanoid, _term.value))
+
+
