@@ -22,6 +22,14 @@ Bento MetaDB Shim
 
 Shim layer for accessing Bento MetaDB
 
+It requires using the feat/nanoidvsid, branch of bento_meta because it relies on having nanoids. 
+
+It also requires the uri, username, and password for the mdb database to be in the environmental variables `NEO4J_MDB_URI`, `NEO4J_MDB_USER`, and `NEO4J_MDB_PASS`.
+
+Run with `>$ python -m bento_meta_shim`
+
+
+Profiling data in `profiling/`.
 
 * Free software: MIT license
 * Documentation: https://bento-meta-shim.readthedocs.io.
